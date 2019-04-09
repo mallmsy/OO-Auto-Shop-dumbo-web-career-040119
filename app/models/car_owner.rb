@@ -15,9 +15,7 @@ class CarOwner
 
   # Get a list of all the cars that a specific owner has
   def cars_i_own
-    Car.all.select do |car|
-      car.owner == self
-    end
+    Car.all.select { |car| car.owner == self }
   end
 
 # Get a list of all the mechanics that a specific owner goes to
@@ -27,9 +25,8 @@ class CarOwner
 
 # Get the average amount of cars owned for all owners
   def self.average_cars_owned
-    cars_owned = self.all.map do |owner|
-      owner.cars_i_own.length
-    end
+    cars_owned = self.all.map(&:cars_i_own).length
+
     cars_owned.inject(0, :+).to_f / cars_owned.length.to_f
   end
 

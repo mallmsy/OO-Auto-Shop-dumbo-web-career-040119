@@ -16,9 +16,7 @@ end
 
   # Get a list of all cars that a mechanic services
   def cars_i_service
-    Car.all.select do |car|
-      car.mechanic == self
-    end
+    Car.all.select {|car| car.mechanic == self}
   end
 
 # Get a list of all the car owners that go to a specific mechanic
